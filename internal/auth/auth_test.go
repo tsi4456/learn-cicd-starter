@@ -15,7 +15,7 @@ func TestAuth(t *testing.T) {
 	shortAuth := hasAuthorisation.Clone()
 	shortAuth.Set("Authorization", "ApiKeyHasNoSpaces")
 	wrongAuth := hasAuthorisation.Clone()
-	wrongAuth.Set("Authorization", "Ap1Key blahblahblah")
+	wrongAuth.Set("Authorization", "Ap1Key blahblahblahblah")
 
 	tests := []struct {
 		name     string
