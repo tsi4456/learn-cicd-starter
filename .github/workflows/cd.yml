@@ -20,3 +20,20 @@ jobs:
 
       - name: Build app
         run: ./scripts/buildprod.sh
+
+      - name: Authorise gcloud
+        id: 'auth'
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{secrets.GCP_CREDENTIALS}}'
+
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v3
+        with:
+          project_id: 'banded-pad-472508-q6'
+      
+      - name: Test gcloud CLI
+        run: gcloud info
+
+      - name: Build Docker image
+        run: gcloud builds submit --tag us-central1-docker.pkg.dev/banded-pad-472508-q6/notely-ar-repo/notely:latest
