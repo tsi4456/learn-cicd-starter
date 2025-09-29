@@ -37,3 +37,6 @@ jobs:
 
       - name: Build Docker image
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/banded-pad-472508-q6/notely-ar-repo/notely:latest
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/banded-pad-472508-q6/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project banded-pad-472508-q6 --max-instances=4
